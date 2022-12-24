@@ -12,4 +12,7 @@ Assignatura:	IIEIA
 
 void main(void)
 {
+	P1=0x00;
+	P2=0x00;
+	P3=0x00;
 }
