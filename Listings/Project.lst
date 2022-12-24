@@ -1,0 +1,40 @@
+C51 COMPILER V9.59.0.0   PROJECT                                                           12/24/2022 13:17:48 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\P
+                    -roject.lst) TABS(2) OBJECT(.\Objects\Project.obj)
+
+line level    source
+
+   1          /*
+   2          Autors:       Marcel Monereo, Javier Bustos, 
+   3                        Alexander Jadnov, Tomàs Caminal
+   4          Data:         24/12/2022
+   5          Assignatura:  IIEIA
+   6          */
+   7          
+   8          #include <reg51.h>
+   9          
+  10          //Declaración de variables
+  11          
+  12          
+  13          void main(void)
+  14          {
+  15   1        
+  16   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      1    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
