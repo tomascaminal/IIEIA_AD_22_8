@@ -6,8 +6,8 @@ Assignatura:	IIEIA
 */
 
 #include <reg51.h>
-sbit WR = P3^0;
-sbit INTR = P3^1;
+sbit ADC_WR = P3^0;
+sbit ADC_INTR = P3^1;
 
 #define LEDs = P2;
 //Declaració de variables
