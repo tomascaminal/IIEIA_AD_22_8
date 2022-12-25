@@ -3,6 +3,7 @@ Autors: 			Marcel Monereo, Javier Bustos,
 							Alexander Jadnov, Tomàs Caminal
 Data: 				24/12/2022
 Assignatura:	IIEIA
+lp
 */
 
 #include <reg51.h>
