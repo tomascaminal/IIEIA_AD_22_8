@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/25/2022  11:52:12  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/25/2022  12:43:22  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -27,7 +27,7 @@ LINK MAP OF MODULE:  .\Objects\ad8 (PROJECT)
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
             CODE    0800H     000CH     UNIT         ?C_C51STARTUP
-            CODE    080CH     0008H     UNIT         ?PR?MAIN?PROJECT
+            CODE    080CH     0004H     UNIT         ?PR?MAIN?PROJECT
 
 
 
@@ -49,7 +49,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\ad8 (PROJECT)
 
   -------         MODULE        PROJECT
   C:0000H         SYMBOL        _ICE_DUMMY_
-  D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   C:080CH         PUBLIC        main
@@ -57,18 +56,16 @@ SYMBOL TABLE OF MODULE:  .\Objects\ad8 (PROJECT)
   C:080CH         LINE#         16
   C:080CH         LINE#         17
   C:080CH         LINE#         18
-  C:080FH         LINE#         19
-  C:0811H         LINE#         20
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/25/2022  11:52:12  PAGE 2
-
-
-  C:0813H         LINE#         21
+  C:080FH         LINE#         20
   -------         ENDPROC       MAIN
   -------         ENDMOD        PROJECT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/25/2022  12:43:22  PAGE 2
+
+
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0008H BYTE ( 0%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0004H BYTE ( 0%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 code=23
+Program Size: data=9.0 xdata=0 code=19
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
