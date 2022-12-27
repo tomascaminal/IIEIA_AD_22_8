@@ -10,7 +10,6 @@ sbit AdcWr = P3^0;
 sbit AdcIntr = P3^2;
 
 #define VRef 5
-#define sensib 10e-3
 
 
 #define LightI P0
@@ -19,8 +18,9 @@ sbit AdcIntr = P3^2;
 bit Digit = 0x20^0;
 unsigned char Tens;
 unsigned char Ones;
+unsigned char Count2;
 
-float LightI;
+float PercentualLightI;
 
 unsigned char FlagT1;
 unsigned char FlagEOC;
@@ -29,6 +29,7 @@ unsigned char FlagEOC;
 void initialize(void);
 void dynVisualize(void);
 float CalcLightI(unsigned char AnalogData);
+void CalcDigits(float LightInput);
 void RSI_T0(void);
 void RSI_T1(void);
 void RSI_INT0(void);
@@ -40,14 +41,14 @@ void main(void)
 	{
 		if (FlagT1==1)
 		{
-			WR_ADC = 0;
-			WR_ADC = 1;		//Order of initializaing the conversion
+			AdcWr = 0;
+			AdcWr = 1;		//Order of initializaing the conversion
 			FlagT1 = 0;
+			while(FlagEOC==0);
+			PercentualLightI = CalcLightI(LightI);
+			CalcDigits(PercentualLightI);
+			FlagEOC = 0;
 		}
-		while(FlagEOC==0);
-		AnalogData = CalcLightI(LightI);
-		
-		FlagEOC = 0;
 	}
 	
 }
@@ -74,9 +75,33 @@ void initialize(void)
 
 float CalcLightI(unsigned char AnalogData)
 {
-	float LightI;
-	LightI = (AnalogData*VRef/255)
-	return
+	float PercentualI;
+	LightI = (AnalogData/255)*100;
+	return PercentualI;
+}
+
+void CalcDigits(float LightInput)
+{
+	if (LightInput < 100 && LightInput >= 10)
+	{
+		Tens = LightInput/10;
+		Ones = (LightInput-Tens*10);
+	}
+	else if (LightInput < 10 && LightInput > 0)
+	{
+		Tens = 0;
+		Ones = LightInput;
+	}
+	else if (LightInput >= 100)
+	{
+		Tens = 9;
+		Ones = 9;
+	}
+	else if (LightInput <= 0)
+	{
+		Tens = 0;
+		Ones = 0;
+	}
 }
 
 void dynVisualize(void)
@@ -84,7 +109,7 @@ void dynVisualize(void)
 	//Each 5ms the displayed digit changes
 	//When Digit = 0 the display on P1.6 works
 	//When Digit = 1 the display on P1.7 works
-	LEDs = (0x1 << (Digit + 5))|(~Digit*Tens|Digit*Ones);
+	LEDs = (0x1 << (~Digit*5|Digit*6))|(~Digit*Tens|Digit*Ones);
 }
 
 void RSI_T0 (void) interrupt 1
@@ -92,7 +117,7 @@ void RSI_T0 (void) interrupt 1
 	TH0 = 0xFA;
 	TL0 = 0x93;
 	dynVisualize();
-	Digit = ~Digit
+	Digit = ~Digit;
 }
 
 void RSI_T1 (void) interrupt 3
@@ -109,5 +134,5 @@ void RSI_T1 (void) interrupt 3
 
 void RSI_INT0 (void) interrupt 0
 {
-	flagEOC = 1;
+	FlagEOC = 1;
 }
